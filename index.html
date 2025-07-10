@@ -107,24 +107,32 @@
       color: #00c6ff;
     }
 
-    .telegram-btn {
+    .social-btn {
       display: inline-block;
       margin-top: 25px;
-      padding: 12px 25px;
+      width: 50px;
+      height: 50px;
       background: linear-gradient(135deg, #00c6ff, #0072ff);
       border: none;
-      border-radius: 50px;
+      border-radius: 50%;
       color: white;
-      font-size: 1.1em;
-      text-decoration: none;
+      text-align: center;
+      line-height: 50px; /* Center the icon vertically */
       transition: all 0.3s ease;
       box-shadow: 0 0 10px #00c6ff;
+      margin: 0 10px; /* Space between buttons */
+      position: relative;
     }
 
-    .telegram-btn:hover {
+    .social-btn:hover {
       background: linear-gradient(135deg, #0072ff, #00c6ff);
-      transform: scale(1.05);
+      transform: scale(1.1);
       box-shadow: 0 0 20px #00c6ff;
+    }
+
+    .social-btn img {
+      width: 70%; /* Adjust icon size */
+      height: auto;
     }
 
     footer {
@@ -170,7 +178,12 @@
         </ul>
       </div>
 
-      <a href="https://t.me/CRIMINAL_B0Y" class="telegram-btn" target="_blank">My Telegram</a>
+      <a href="https://t.me/CRIMINAL_B0Y" class="social-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/Telegram_logo.svg" alt="Telegram Icon" />
+      </a>
+      <a href="https://instagram.com/coulaam" class="social-btn" target="_blank">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram Icon" />
+      </a>
     </div>
 
     <footer>© 2025 ꜱᴧʜɪʟ. All rights reserved.</footer>
@@ -178,6 +191,3 @@
 
 </body>
 </html>
-
-
-* MADE BY @CRIMINAL_B0Y OUR TELEGRAM CHANNEL
