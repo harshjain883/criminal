@@ -12,6 +12,7 @@ module.exports = {
   theme: {
     ...defaultConfig.theme,
     extend: {
+      ...defaultConfig.theme.extend,
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
