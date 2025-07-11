@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 // Ensure all used icons are imported from lucide-react
-import { Sun, Moon, MessageCircle, Instagram, Github, Mail } from "lucide-react"
+import { Sun, Moon, Instagram, Github, Mail, Send } from "lucide-react" // Added Send icon
 
 export default function Portfolio() {
   const [isDarkMode, setIsDarkMode] = useState(true)
@@ -21,14 +21,14 @@ export default function Portfolio() {
   const socialLinks = [
     {
       name: "Telegram",
-      icon: Telegram, // Using MessageCircle from lucide-react for Telegram icon
+      icon: Send, // Changed to Send icon for Telegram
       href: "https://t.me/CRIMINAL_B0Y",
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-blue-500/50",
     },
     {
       name: "Instagram",
-      icon: Instagram,
+      icon: Instagram, // Already correct, keeping as Instagram
       href: "https://instagram.com/love",
       color: "from-pink-500 to-purple-600",
       hoverColor: "hover:shadow-pink-500/50",
@@ -92,17 +92,15 @@ export default function Portfolio() {
 
       {/* Theme Toggle Button */}
       <button
-        onClick={toggleTheme}
-        className={`fixed top-6 right-6 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out z-50
-          ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}`}
-        aria-label="Toggle theme"
-      >
-        {isDarkMode ? (
-          <Sun className="w-6 h-6 transition-transform duration-300 rotate-0 scale-100 dark:rotate-90 dark:scale-0" />
-        ) : (
-          <Moon className="w-6 h-6 transition-transform duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
-        )}
-      </button>
+  onClick={toggleTheme}
+  className={`fixed top-6 right-6 p-4 rounded-full shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out z-50
+  ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
+  flex items-center justify-center`} // Adjusted for positioning
+  aria-label="Toggle theme"
+>
+  <Sun className="w-5 h-5 transition-all duration-700 ease-in-out rotate-0 scale-100 dark:rotate-90 dark:scale-0" />
+  <Moon className="w-5 h-5 transition-all duration-700 ease-in-out rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+</button>
 
       {/* Main Content Container */}
       <div className="container relative z-10 flex flex-col items-center justify-start px-5 py-16 overflow-y-auto h-full max-w-4xl mx-auto">
