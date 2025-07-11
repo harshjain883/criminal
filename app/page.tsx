@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+// Ensure all used icons are imported from lucide-react
 import { Sun, Moon, MessageCircle, Instagram, Github, Mail } from "lucide-react"
 
 export default function Portfolio() {
@@ -20,7 +21,7 @@ export default function Portfolio() {
   const socialLinks = [
     {
       name: "Telegram",
-      icon: Telegram,
+      icon: MessageCircle, // Using MessageCircle from lucide-react for Telegram icon
       href: "https://t.me/CRIMINAL_B0Y",
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-blue-500/50",
@@ -61,10 +62,7 @@ export default function Portfolio() {
         className="fixed top-0 left-0 min-w-full min-h-full object-cover z-[-2]"
         onError={(e) => console.error("Video load error:", e)}
       >
-        <source
-          src="https://assets.mixkit.co/videos/preview/mixkit-abstract-particles-moving-in-a-dark-background-2536-large.mp4"
-          type="video/mp4"
-        />
+        <source src="/bg.mp4" type="video/mp4" />
         Your browser does not support the video tag.
       </video>
 
@@ -96,8 +94,7 @@ export default function Portfolio() {
       <button
         onClick={toggleTheme}
         className={`fixed top-6 right-6 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out z-50
-          ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
-          hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 ${isDarkMode ? "focus:ring-white/50" : "focus:ring-black/50"}`}
+          ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}`}
         aria-label="Toggle theme"
       >
         {isDarkMode ? (
@@ -114,10 +111,10 @@ export default function Portfolio() {
           ${isDarkMode ? "bg-white/5 border border-white/10 text-white" : "bg-black/5 border border-black/10 text-black"}`}
         >
           <img
-            src="/placeholder.svg?height=140&width=140"
+            src="/profile.png" // Updated to use your profile.png
             alt="ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ"
-            className="profile-pic mx-auto mb-6 w-36 h-36 rounded-full object-cover border-4 transition-all duration-500 ease-in-out
-              ${isDarkMode ? 'border-white' : 'border-black'}"
+            className={`profile-pic mx-auto mb-6 w-36 h-36 rounded-full object-cover border-4 transition-all duration-500 ease-in-out
+              ${isDarkMode ? "border-white" : "border-black"}`}
           />
           <h1
             className={`text-5xl md:text-6xl font-extrabold mb-4 leading-tight transition-all duration-500 ease-in-out
