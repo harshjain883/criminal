@@ -21,7 +21,7 @@ export default function Portfolio() {
   const socialLinks = [
     {
       name: "Telegram",
-      icon: MessageCircle, // Using MessageCircle from lucide-react for Telegram icon
+      icon: Telegram, // Using MessageCircle from lucide-react for Telegram icon
       href: "https://t.me/CRIMINAL_B0Y",
       color: "from-blue-500 to-blue-700",
       hoverColor: "hover:shadow-blue-500/50",
