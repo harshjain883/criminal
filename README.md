@@ -1,30 +1,64 @@
-# ꜱᴧʜɪʟ - Personal Portfolio
+import json
+import os
 
-This is a modern, responsive personal portfolio website built with Next.js and Tailwind CSS. It features a dynamic theme toggle (light/dark mode), animated social buttons, and a clean, glassmorphism-inspired design.
+def get_user_input(prompt, default_value=None):
+    """Helper function to get user input with an optional default."""
+    if default_value:
+        return input(f"{prompt} (default: {default_value}): ") or default_value
+    return input(f"{prompt}: ")
 
-## ✨ Features
+def generate_readme_content_unique():
+    """Generates README.md content with user interaction."""
 
-- **Responsive Design**: Optimized for various screen sizes (mobile, tablet, desktop).
-- **Theme Toggle**: Seamlessly switch between light and dark modes.
-- **Animated Social Buttons**: Interactive buttons with hover effects and tooltips.
-- **Glassmorphism UI**: Modern frosted glass effect for content cards.
-- **Clean & Minimal**: Focus on essential information with a sleek aesthetic.
-- **Easy to Customize**: Built with Tailwind CSS for quick styling adjustments.
+    print("\n✨ Let's create a unique README for your portfolio! ✨\n")
 
-## 🚀 Getting Started
+    # Try to read project name from package.json
+    project_name = "Sahil's Portfolio"
+    try:
+        with open('package.json', 'r') as f:
+            package_data = json.load(f)
+            project_name = package_data.get('name', project_name).replace('-', ' ').title()
+    except FileNotFoundError:
+        print("Warning: package.json not found. Using default project name.")
+    except json.JSONDecodeError:
+        print("Warning: Could not parse package.json. Using default project name.")
 
-Follow these steps to set up and run the project locally.
+    user_name = get_user_input("What is your full name?", "ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ")
+    github_username = get_user_input("What is your GitHub username?", "harshjain883")
+    project_description = get_user_input(
+        "Briefly describe your project",
+        "A modern, responsive portfolio showcasing my skills in web development and bot creation."
+    )
 
-### Prerequisites
+    vibe_choice = get_user_input(
+        "Choose a vibe for your README (1: Professional, 2: Creative, 3: Minimalist)",
+        "1"
+    )
 
-Make sure you have Node.js (v18.x or higher) and npm (or yarn/pnpm) installed on your machine.
+    intro_phrase = ""
+    if vibe_choice == "1":
+        intro_phrase = "Welcome to my personal portfolio project!"
+    elif vibe_choice == "2":
+        intro_phrase = "Dive into my digital world! This is where creativity meets code."
+    elif vibe_choice == "3":
+        intro_phrase = "My portfolio. Clean. Functional."
+    else:
+        intro_phrase = "Explore my portfolio!"
 
-- [Node.js](https://nodejs.org/en/download/)
-- [npm](https://www.npmjs.com/get-npm) (usually comes with Node.js)
+    readme_content = f"""# {project_name}
 
-### Installation
+👋 {intro_phrase}
 
-1. **Clone the repository:**
- ```bash
- git clone https://github.com/harshjain883/criminal.git
- cd criminal
+{project_description}
+
+## 🚀 Features
+
+-   **Interactive Theme Toggle**: Switch between beautiful dark and light modes.
+-   **Responsive Design**: Optimized for seamless viewing across all devices.
+-   **Dynamic Social Links**: Engaging buttons with hover effects and tooltips.
+-   **Glassmorphism UI**: Modern, frosted glass-like elements.
+-   **Animated Background**: Subtle, pulsing background shapes for visual flair.
+-   **Clean & Minimal Codebase**: Built with Next.js 14 (App Router) and Tailwind CSS.
+
+## 📂 Project Structure
+
