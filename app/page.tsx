@@ -92,9 +92,9 @@ export default function Portfolio() {
 
       {/* Theme Toggle Button */}
      
- <button
+      <button
         onClick={toggleTheme}
-        className={`fixed top-6 -translate-y-1/2 right-6 p-4 rounded-full shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out z-50
+        className={`fixed top-1/2 -translate-y-1/2 right-6 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out z-50
     ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
     relative flex items-center justify-center`} // Added relative and flex for positioning
         aria-label="Toggle theme"
