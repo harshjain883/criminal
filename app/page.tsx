@@ -91,16 +91,17 @@ export default function Portfolio() {
       </div>
 
       {/* Theme Toggle Button */}
-      <button
-  onClick={toggleTheme}
-  className={`fixed top-6 right-6 p-4 rounded-full shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out z-50
-  ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
-  flex items-center justify-center`} // Adjusted for positioning
-  aria-label="Toggle theme"
->
-  <Sun className="w-5 h-5 transition-all duration-700 ease-in-out rotate-0 scale-100 dark:rotate-90 dark:scale-0" />
-  <Moon className="w-5 h-5 transition-all duration-700 ease-in-out rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
-</button>
+     
+ <button
+        onClick={toggleTheme}
+        className={`fixed top-6 -translate-y-1/2 right-6 p-4 rounded-full shadow-lg backdrop-blur-md transition-all duration-500 ease-in-out z-50
+    ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
+    relative flex items-center justify-center`} // Added relative and flex for positioning
+        aria-label="Toggle theme"
+      >
+        <Sun className="absolute w-6 h-6 transition-all duration-700 ease-in-out rotate-0 scale-100 dark:rotate-90 dark:scale-0" />
+        <Moon className="absolute w-6 h-6 transition-all duration-700 ease-in-out rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+      </button>
 
       {/* Main Content Container */}
       <div className="container relative z-10 flex flex-col items-center justify-start px-5 py-16 overflow-y-auto h-full max-w-4xl mx-auto">
