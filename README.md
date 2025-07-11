@@ -1,64 +1,61 @@
-import json
-import os
+def generate_readme_content():
+    project_name = "ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ's Interactive Portfolio"
+    author_name = "ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ"
+    github_repo = "harshjain883/criminal" # User's GitHub repo
 
-def get_user_input(prompt, default_value=None):
-    """Helper function to get user input with an optional default."""
-    if default_value:
-        return input(f"{prompt} (default: {default_value}): ") or default_value
-    return input(f"{prompt}: ")
+    # Dynamic features/highlights
+    features = [
+        "Dynamic Dark & Light Mode Theme Toggle 🌓",
+        "Sleek Glassmorphism UI Design with Animated Backgrounds ✨",
+        "Interactive Social Media Buttons with Hover Effects & Tooltips 🚀",
+        "Clean, Responsive Layout for All Devices (Mobile-First) 📱",
+        "Optimized for Seamless Vercel Deployment ⚡",
+        "Uses System Fonts for Universal Compatibility & Performance ✍️",
+    ]
 
-def generate_readme_content_unique():
-    """Generates README.md content with user interaction."""
+    # ASCII Art Header
+    ascii_art = f"""
+███████╗███████╗██╗  ██╗██╗   ██╗███████╗██████╗
+██╔════╝██╔════╝██║  ██║██║   ██║██╔════╝██╔══██╗
+███████╗█████╗  ███████║██║   ██║█████╗  ██████╔╝
+╚════██║██╔══╝  ██╔══██║██║   ██║██╔══╝  ██╔══██╗
+███████║███████╗██║  ██║╚██████╔╝███████╗██║  ██║
+╚══════╝╚══════╝╚═╝  ╚═╝ ╚═════╝ ╚══════╝╚═╝  ╚═╝
+    """
 
-    print("\n✨ Let's create a unique README for your portfolio! ✨\n")
+    readme_content = f"""# {ascii_art}
 
-    # Try to read project name from package.json
-    project_name = "Sahil's Portfolio"
-    try:
-        with open('package.json', 'r') as f:
-            package_data = json.load(f)
-            project_name = package_data.get('name', project_name).replace('-', ' ').title()
-    except FileNotFoundError:
-        print("Warning: package.json not found. Using default project name.")
-    except json.JSONDecodeError:
-        print("Warning: Could not parse package.json. Using default project name.")
+<p align="center">
+  Welcome to {project_name}!
+  <br>
+  A modern, interactive portfolio crafted with Next.js, React, and Tailwind CSS.
+</p>
 
-    user_name = get_user_input("What is your full name?", "ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ")
-    github_username = get_user_input("What is your GitHub username?", "harshjain883")
-    project_description = get_user_input(
-        "Briefly describe your project",
-        "A modern, responsive portfolio showcasing my skills in web development and bot creation."
-    )
+---
 
-    vibe_choice = get_user_input(
-        "Choose a vibe for your README (1: Professional, 2: Creative, 3: Minimalist)",
-        "1"
-    )
+## 🌟 Project Highlights
 
-    intro_phrase = ""
-    if vibe_choice == "1":
-        intro_phrase = "Welcome to my personal portfolio project!"
-    elif vibe_choice == "2":
-        intro_phrase = "Dive into my digital world! This is where creativity meets code."
-    elif vibe_choice == "3":
-        intro_phrase = "My portfolio. Clean. Functional."
-    else:
-        intro_phrase = "Explore my portfolio!"
+-   **{features[0]}**: Switch between elegant dark and crisp light themes with a single click.
+-   **{features[1]}**: Experience a visually stunning user interface with blurred glass-like elements and subtle background animations.
+-   **{features[2]}**: Engage with beautifully designed social icons that react dynamically to your cursor.
+-   **{features[3]}**: Your portfolio looks fantastic and performs flawlessly on any device, from desktops to smartphones.
+-   **{features[4]}**: Built for production, ensuring smooth and reliable hosting on Vercel.
+-   **{features[5]}**: Fast loading times and consistent typography across different operating systems.
 
-    readme_content = f"""# {project_name}
+---
 
-👋 {intro_phrase}
+## 🚀 Get Started
 
-{project_description}
+Ready to explore or set up your own version? Here’s how!
 
-## 🚀 Features
+### Prerequisites
 
--   **Interactive Theme Toggle**: Switch between beautiful dark and light modes.
--   **Responsive Design**: Optimized for seamless viewing across all devices.
--   **Dynamic Social Links**: Engaging buttons with hover effects and tooltips.
--   **Glassmorphism UI**: Modern, frosted glass-like elements.
--   **Animated Background**: Subtle, pulsing background shapes for visual flair.
--   **Clean & Minimal Codebase**: Built with Next.js 14 (App Router) and Tailwind CSS.
+Make sure you have Node.js (v18 or higher) and npm (or Yarn) installed on your machine.
 
-## 📂 Project Structure
+### Installation
 
+1.  **Clone this amazing repository:**
+
+    ```bash
+    git clone https://github.com/{github_repo}.git
+    cd criminal
