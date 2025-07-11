@@ -1,101 +1,244 @@
-export default function Home() {
+"use client"
+
+import { useState, useEffect } from "react"
+import { Sun, Moon, MessageCircle, Instagram, Github, Mail } from "lucide-react"
+
+export default function Portfolio() {
+  const [isDarkMode, setIsDarkMode] = useState(true)
+  const [hoveredButton, setHoveredButton] = useState<string | null>(null)
+
+  useEffect(() => {
+    // Set initial theme based on system preference or default to dark
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches
+    setIsDarkMode(prefersDark)
+  }, [])
+
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode)
+  }
+
+  const socialLinks = [
+    {
+      name: "Telegram",
+      icon: Telegram,
+      href: "https://t.me/CRIMINAL_B0Y",
+      color: "from-blue-500 to-blue-700",
+      hoverColor: "hover:shadow-blue-500/50",
+    },
+    {
+      name: "Instagram",
+      icon: Instagram,
+      href: "https://instagram.com/love",
+      color: "from-pink-500 to-purple-600",
+      hoverColor: "hover:shadow-pink-500/50",
+    },
+    {
+      name: "GitHub",
+      icon: Github,
+      href: "https://github.com/harshjain883",
+      color: "from-gray-700 to-gray-900",
+      hoverColor: "hover:shadow-gray-700/50",
+    },
+    {
+      name: "Mail",
+      icon: Mail,
+      href: "mailto:sahilvermajmk@gmail.com",
+      color: "from-red-500 to-red-700",
+      hoverColor: "hover:shadow-red-500/50",
+    },
+  ]
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-blue-900 to-purple-900 text-white">
-      <div className="flex flex-col items-center justify-center min-h-screen px-4">
-        <div className="max-w-4xl w-full bg-white/10 backdrop-blur-lg rounded-3xl p-8 md:p-12 text-center border border-white/20">
-          {/* Profile */}
-          <div className="mb-8">
-            <div className="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-4xl font-bold">
-              SV
-            </div>
-          </div>
+    <div
+      className={`relative min-h-screen flex flex-col items-center justify-center overflow-hidden transition-colors duration-500 ${isDarkMode ? "dark" : "light"}`}
+    >
+      {/* Background Video */}
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline // Added for better mobile compatibility
+        className="fixed top-0 left-0 min-w-full min-h-full object-cover z-[-2]"
+        onError={(e) => console.error("Video load error:", e)}
+      >
+        <source
+          src="https://assets.mixkit.co/videos/preview/mixkit-abstract-particles-moving-in-a-dark-background-2536-large.mp4"
+          type="video/mp4"
+        />
+        Your browser does not support the video tag.
+      </video>
 
-          {/* Name */}
-          <h1 className="text-4xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ
+      {/* Overlay */}
+      <div
+        className={`fixed top-0 left-0 w-full h-full z-[-1] transition-opacity duration-500 ${isDarkMode ? "bg-black/60" : "bg-white/40"}`}
+      ></div>
+
+      {/* Animated Background Elements */}
+      <div className="absolute inset-0 z-[-1] overflow-hidden">
+        {Array.from({ length: 10 }).map((_, i) => (
+          <div
+            key={i}
+            className="absolute rounded-full bg-gradient-to-br from-purple-500 to-blue-500 opacity-20 animate-pulse"
+            style={{
+              width: `${50 + i * 20}px`,
+              height: `${50 + i * 20}px`,
+              top: `${Math.random() * 100}%`,
+              left: `${Math.random() * 100}%`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${5 + Math.random() * 10}s`,
+              filter: "blur(20px)",
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Theme Toggle Button */}
+      <button
+        onClick={toggleTheme}
+        className={`fixed top-6 right-6 p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 ease-in-out z-50
+          ${isDarkMode ? "bg-white/10 text-white hover:bg-white/20" : "bg-black/10 text-black hover:bg-black/20"}
+          hover:scale-110 focus:outline-none focus:ring-2 focus:ring-offset-2 ${isDarkMode ? "focus:ring-white/50" : "focus:ring-black/50"}`}
+        aria-label="Toggle theme"
+      >
+        {isDarkMode ? (
+          <Sun className="w-6 h-6 transition-transform duration-300 rotate-0 scale-100 dark:rotate-90 dark:scale-0" />
+        ) : (
+          <Moon className="w-6 h-6 transition-transform duration-300 rotate-90 scale-0 dark:rotate-0 dark:scale-100" />
+        )}
+      </button>
+
+      {/* Main Content Container */}
+      <div className="container relative z-10 flex flex-col items-center justify-start px-5 py-16 overflow-y-auto h-full max-w-4xl mx-auto">
+        <div
+          className={`card w-full rounded-3xl p-8 md:p-12 text-center shadow-2xl transition-all duration-500 ease-in-out
+          ${isDarkMode ? "bg-white/5 border border-white/10 text-white" : "bg-black/5 border border-black/10 text-black"}`}
+        >
+          <img
+            src="/placeholder.svg?height=140&width=140"
+            alt="ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ"
+            className="profile-pic mx-auto mb-6 w-36 h-36 rounded-full object-cover border-4 transition-all duration-500 ease-in-out
+              ${isDarkMode ? 'border-white' : 'border-black'}"
+          />
+          <h1
+            className={`text-5xl md:text-6xl font-extrabold mb-4 leading-tight transition-all duration-500 ease-in-out
+            ${isDarkMode ? "bg-gradient-to-r from-purple-400 to-blue-400 text-transparent bg-clip-text" : "text-black"}`}
+          >
+            ꜱᴧʜɪʟᴠᴇꝛᴍᴧ
           </h1>
-
-          {/* Description */}
-          <p className="text-lg md:text-xl mb-10 text-gray-300">
+          <p
+            className={`text-lg md:text-xl mb-8 leading-relaxed transition-all duration-500 ease-in-out
+            ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}
+          >
             Hi! I'm ꜱᴧʜɪʟ ᴠᴇꝛᴍᴧ — a creative tech lover building bots, websites, and Telegram tools.
           </p>
 
-          {/* Info */}
-          <div className="grid md:grid-cols-2 gap-8 mb-10 text-left">
-            <div className="bg-white/5 p-6 rounded-2xl">
-              <h2 className="text-2xl font-semibold mb-4 text-blue-300">About Me</h2>
-              <ul className="space-y-2">
+          {/* Info Boxes */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
+            <div
+              className={`info-box text-left p-6 rounded-xl backdrop-blur-sm transition-all duration-500 ease-in-out
+              ${isDarkMode ? "bg-white/5 border border-white/10 text-white" : "bg-black/5 border border-black/10 text-black"}`}
+            >
+              <h2
+                className={`text-2xl font-bold mb-4 pb-2 border-b transition-all duration-500 ease-in-out
+                ${isDarkMode ? "border-white/30" : "border-black/30"}`}
+              >
+                About Me
+              </h2>
+              <ul
+                className={`list-none p-0 text-lg transition-all duration-500 ease-in-out
+                ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}
+              >
                 <li>
-                  <span className="text-cyan-400">›</span> <strong>Country:</strong> India
+                  <span className="text-blue-400">›</span> <strong>Country:</strong> India
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> <strong>Age:</strong> 23
+                  <span className="text-blue-400">›</span> <strong>Age:</strong> 23
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> <strong>Hobbies:</strong> Coding, Designing
+                  <span className="text-blue-400">›</span> <strong>Hobbies:</strong> Coding, Designing
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white/5 p-6 rounded-2xl">
-              <h2 className="text-2xl font-semibold mb-4 text-purple-300">Skills</h2>
-              <ul className="space-y-2">
+            <div
+              className={`info-box text-left p-6 rounded-xl backdrop-blur-sm transition-all duration-500 ease-in-out
+              ${isDarkMode ? "bg-white/5 border border-white/10 text-white" : "bg-black/5 border border-black/10 text-black"}`}
+            >
+              <h2
+                className={`text-2xl font-bold mb-4 pb-2 border-b transition-all duration-500 ease-in-out
+                ${isDarkMode ? "border-white/30" : "border-black/30"}`}
+              >
+                Skills
+              </h2>
+              <ul
+                className={`list-none p-0 text-lg transition-all duration-500 ease-in-out
+                ${isDarkMode ? "text-gray-200" : "text-gray-800"}`}
+              >
                 <li>
-                  <span className="text-cyan-400">›</span> PHP & Python Bots
+                  <span className="text-blue-400">›</span> PHP & Python Bots
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> HTML, CSS, JS
+                  <span className="text-blue-400">›</span> HTML, CSS, JS
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> Telegram Bot Development
+                  <span className="text-blue-400">›</span> Telegram Bot Development
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> Web UI/UX Design
+                  <span className="text-blue-400">›</span> Web UI/UX Design
                 </li>
                 <li>
-                  <span className="text-cyan-400">›</span> Automation Systems
+                  <span className="text-blue-400">›</span> Automation Systems
                 </li>
               </ul>
             </div>
           </div>
 
-          {/* Social Links */}
-          <div className="flex justify-center gap-6 mb-8">
-            <a
-              href="https://t.me/CRIMINAL_B0Y"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-16 h-16 bg-gradient-to-br from-blue-400 to-blue-600 rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300"
-            >
-              📱
-            </a>
-            <a
-              href="https://instagram.com/love"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-16 h-16 bg-gradient-to-br from-pink-400 to-orange-500 rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300"
-            >
-              📷
-            </a>
-            <a
-              href="https://github.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-16 h-16 bg-gradient-to-br from-gray-600 to-gray-800 rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300"
-            >
-              💻
-            </a>
-            <a
-              href="mailto:sahil@example.com"
-              className="w-16 h-16 bg-gradient-to-br from-green-400 to-green-600 rounded-2xl flex items-center justify-center text-2xl hover:scale-110 transition-transform duration-300"
-            >
-              ✉️
-            </a>
+          {/* Social Buttons */}
+          <div className="flex justify-center gap-6 mt-10 flex-wrap">
+            {socialLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`relative w-20 h-20 flex items-center justify-center rounded-full overflow-hidden group transition-all duration-300 ease-in-out
+                  ${isDarkMode ? "shadow-lg shadow-white/10" : "shadow-md shadow-black/10"}
+                  ${hoveredButton === link.name ? `scale-110 rotate-3 ${link.hoverColor} shadow-2xl` : ""}`}
+                onMouseEnter={() => setHoveredButton(link.name)}
+                onMouseLeave={() => setHoveredButton(null)}
+                aria-label={link.name}
+              >
+                {/* Background Gradient */}
+                <div
+                  className={`absolute inset-0 bg-gradient-to-br ${link.color} transition-all duration-300 ease-in-out group-hover:scale-125`}
+                ></div>
+
+                {/* Icon */}
+                <link.icon className="relative z-10 w-10 h-10 text-white transition-all duration-300 ease-in-out group-hover:scale-110" />
+
+                {/* Ripple Effect */}
+                <div className="absolute inset-0 rounded-full bg-white/20 opacity-0 group-hover:opacity-100 group-hover:scale-[2.5] transition-all duration-500 ease-out"></div>
+
+                {/* Tooltip */}
+                <span
+                  className={`absolute -bottom-8 px-3 py-1 rounded-md text-sm font-medium whitespace-nowrap transition-all duration-300 ease-in-out
+                  ${isDarkMode ? "bg-white/20 text-white" : "bg-black/20 text-black"}
+                  ${hoveredButton === link.name ? "opacity-100 -translate-y-12" : "opacity-0 translate-y-0"}`}
+                >
+                  {link.name}
+                </span>
+              </a>
+            ))}
           </div>
         </div>
 
         {/* Footer */}
-        <footer className="mt-8 text-sm text-gray-400">© 2025 ꜱᴧʜɪʟ. All rights reserved.</footer>
+        <footer
+          className={`mt-12 text-lg transition-colors duration-500 ease-in-out
+          ${isDarkMode ? "text-gray-400" : "text-gray-600"}`}
+        >
+          © 2025 ꜱᴧʜɪʟ. All rights reserved.
+        </footer>
       </div>
     </div>
   )
